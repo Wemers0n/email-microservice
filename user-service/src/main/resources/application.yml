@@ -1,0 +1,33 @@
+#spring.application.name=user-service
+
+spring:
+  application:
+    name: user-service
+
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:user-service-db}
+    username: ${DB_USER:postgres}
+    password: ${DB_PASSWORD:postgres}
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+  kafka:
+    bootstrap-servers: ${KAFKA_BROKER:localhost:9092}
+    topic:
+      mail-topic: mail-topic
+    consumer:
+      group-id: mail-group
+      auto-offset-reset: latest
+
+
+logging:
+  level:
+    org:
+      apache:
+        kafka: OFF
