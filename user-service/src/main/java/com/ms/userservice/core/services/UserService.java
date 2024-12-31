@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 public class UserService {
 
     private final UserRepository userRepository;
+    private final EmailService emailService;
     private final KafkaProducer kafkaProducer;
     private final JsonUtil jsonUtil;
 
@@ -28,13 +29,8 @@ public class UserService {
         return user;
     }
 
-    public EmailDTO message(User user){
-        var mail = EmailDTO.builder()
-        .userId(user.getId())
-        .emailTo(user.getEmail())
-        .subject("Cadastro Realizado com sucesso!")
-        .text(user.getName() + ", seja bem vindo(a)! \nAgradecemos o seu cadastro, aproveite agora todos os recursos da nossa plataforma!")
-        .build();
-        return mail;
+    private EmailDTO message(User user){
+        return this.emailService.message(user);
     }
+
 }
