@@ -28,16 +28,16 @@ spring:
       auto-offset-reset: latest
 
   mail:
-    host: smtp.gmail.com
-    port: 587
-    username: ""
-    password: ""
+    host: ${MAIL_HOST} # smtp.gmail.com
+    port: ${MAIL_PORT} # 587
+    username: ${EMAIL}
+    password: ${PASSWORD_APP}
     properties:
       mail:
         smtp:
-          auth: true
+          auth: ${MAIL_SMTP_AUTH} # true
           starttls:
-            enable: true
+            enable: ${MAIL_SMTP_STARTTLS_ENABLE} # true
 
 logging:
   level:
