@@ -67,6 +67,26 @@ services:
     ports:
       - "5433:5432"
 
+  user-service:
+    build: ./user-service
+    container_name: user-service
+    networks:
+      - email-ms
+    depends_on:
+      - kafka
+      - user-service-db
+    
+    environment:
+      KAFKA_BROKER: kafka:29092
+      DB_HOST: user-service-db
+      DB_PORT: 5432
+      DB_NAME: user-service-db
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+    
+    ports:
+      - "8080:8080"
+      
 networks:
   email-ms:
     driver: bridge
