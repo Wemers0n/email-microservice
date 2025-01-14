@@ -20,5 +20,6 @@ public class User {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
     private String name;
+    // private String username;
     private String email;
 }
