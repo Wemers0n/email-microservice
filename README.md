@@ -21,14 +21,14 @@
 }
 ```
 ### Rota POST: Envio de email
- `POST localhost:8080/api/user/send`
+ `POST localhost:8080/api/send`
 
  #### Exemplo de Payload:
 ```json
 {
-
+	"userId" : "userId",
+	"emailTo" : "emailTo",
+	"subject" : "subject",
+	"text" : "text"
 }
 ```
-### Rota GET: Listar Usuários
- `GET localhost:8080/api/user`
-
